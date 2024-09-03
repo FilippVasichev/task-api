@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: task-api
+  datasource:
+    url: ${DB_HOST:jdbc:postgresql://localhost:5432/postgres}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:qwert}
+  flyway:
+    enabled: true
+
+
+token:
+  secret: c4a6b8d9e4f5a7c8e3d2b1f7a9e6c3d8
+
