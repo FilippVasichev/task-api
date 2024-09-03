@@ -30,19 +30,9 @@ class UserStorage(
                 )
             }.first()
 
-    fun changePassword(
-        userId: UUID,
-        newPassword: String,
-    ) {
-        dslContext.update(USER)
-            .set(USER.PASSWORD, newPassword.encodePassword())
-            .where(USER.ID.eq(userId))
-        // todo
-    }
-
     fun findByEmail(email: String): User? = dslContext.selectFrom(USER).where(USER.EMAIL.eq(email)).map(this::map).firstOrNull()
 
-    fun findById(id: UUID): User? = dslContext.selectFrom(USER).where(USER.ID.eq(id)).map(this::map).first()
+    fun findById(id: UUID): User? = dslContext.selectFrom(USER).where(USER.ID.eq(id)).map(this::map).firstOrNull()
 
     private fun map(record: UserRecord) =
         User(
