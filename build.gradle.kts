@@ -25,7 +25,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.testcontainers:postgresql:1.19.0")
+        classpath("org.testcontainers:postgresql:1.19.8")
         classpath("org.flywaydb:flyway-database-postgresql:10.10.0")
     }
 }
@@ -34,6 +34,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-jooq")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("io.jsonwebtoken:jjwt-impl:0.11.2")
@@ -46,8 +48,9 @@ dependencies {
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.testcontainers:postgresql:1.19.0")
-    testImplementation("org.testcontainers:junit-jupiter:1.15.0")
+    testImplementation("org.testcontainers:postgresql:1.20.1")
+    testImplementation("org.testcontainers:junit-jupiter:1.20.1")
+
     testImplementation("io.rest-assured:rest-assured:5.3.2")
     testImplementation("io.rest-assured:kotlin-extensions:5.3.2")
     testImplementation("io.rest-assured:json-path:5.3.2")

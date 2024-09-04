@@ -1,4 +1,4 @@
-package zionweeds.com.task.auth.storage
+package com.task.auth.storage
 
 import java.security.MessageDigest
 
