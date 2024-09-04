@@ -1,4 +1,4 @@
-package zionweeds.com.task.auth.service
+package com.task.auth.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.taskApi.jooq.tables.pojos.User
@@ -14,8 +14,8 @@ import java.util.UUID
 
 @Service
 class JwtService(
-    val userService: UserService,
-    val objectMapper: ObjectMapper,
+    private val userService: UserService,
+    private val objectMapper: ObjectMapper,
     @Value("\${token.secret}") private val tokenSecret: String,
 ) {
     fun generateAccessToken(
@@ -23,7 +23,7 @@ class JwtService(
         password: String,
     ): String {
         val user = userService.findByEmail(email)
-        if (user != null) {
+        if (user != null && userService.isPasswordValid(password, user.password)) {
             return buildAccessToken(user.id!!)
         }
         throw IllegalArgumentException("Password or Login is incorrect")

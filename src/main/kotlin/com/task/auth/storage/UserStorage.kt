@@ -1,9 +1,11 @@
-package zionweeds.com.task.auth.storage
+package com.task.auth.storage
 
+import com.task.model.UserModel
 import com.taskApi.jooq.tables.pojos.User
 import com.taskApi.jooq.tables.records.UserRecord
 import com.taskApi.jooq.tables.references.USER
 import org.jooq.DSLContext
+import org.jooq.Record3
 import org.springframework.stereotype.Service
 import java.util.UUID
 
@@ -30,6 +32,13 @@ class UserStorage(
                 )
             }.first()
 
+    fun findAll(): List<UserModel> =
+        dslContext
+            .select(USER.ID, USER.EMAIL, USER.NAME)
+            .from(USER)
+            .fetch()
+            .map(this::mapUsers)
+
     fun findByEmail(email: String): User? = dslContext.selectFrom(USER).where(USER.EMAIL.eq(email)).map(this::map).firstOrNull()
 
     fun findById(id: UUID): User? = dslContext.selectFrom(USER).where(USER.ID.eq(id)).map(this::map).firstOrNull()
@@ -40,5 +49,12 @@ class UserStorage(
             email = record.email,
             password = record.password,
             name = record.name,
+        )
+
+    private fun mapUsers(it: Record3<UUID?, String?, String?>): UserModel =
+        UserModel(
+            id = it.get(USER.ID).toString(),
+            email = it.get(USER.EMAIL)!!,
+            name = it.get(USER.NAME)!!,
         )
 }

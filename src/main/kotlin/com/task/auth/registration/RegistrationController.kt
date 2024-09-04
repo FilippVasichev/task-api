@@ -1,5 +1,6 @@
-package zionweeds.com.task.auth.registration
+package com.task.auth.registration
 
+import com.task.auth.service.UserService
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotEmpty
 import org.slf4j.LoggerFactory
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import zionweeds.com.task.auth.service.UserService
 
 @RestController
 @RequestMapping("/api/v1/registration")

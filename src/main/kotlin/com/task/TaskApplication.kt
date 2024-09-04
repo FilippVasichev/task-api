@@ -1,4 +1,4 @@
-package zionweeds
+package com.task
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan

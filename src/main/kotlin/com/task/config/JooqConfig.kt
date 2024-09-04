@@ -1,4 +1,4 @@
-package zionweeds.com.task.config
+package com.task.config
 
 import org.jooq.DSLContext
 import org.jooq.SQLDialect
